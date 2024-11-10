@@ -1,4 +1,4 @@
-![](title.gif)
+![](title.jpg)
 
 
 # Fire Glow for Defold
@@ -14,6 +14,28 @@ Based on: [https://www.shadertoy.com/view/4dSfDK](https://www.shadertoy.com/view
 To integrate the **Fire Glow** extension into your own project, add this project as a [dependency](https://www.defold.com/manuals/libraries/) in your **Defold** game. Open your `game.project` file and add the following line to the dependencies field under the project section:
 
 > [https://github.com/ufgo/fire_glow/archive/master.zip](https://github.com/ufgo/fire_glow/archive/master.zip)  
+
+
+### Shader parameters
+**fire_params:**  
+fire_params.x = 1.0 - standard fire size  
+fire_params.x > 1.0 - larger fire  
+fire_params.x < 1.0 - smaller fire  
+fire_params.y = 1.0 - standard line thickness  
+fire_params.y > 1.0 - thicker lines  
+fire_params.y < 1.0 - thinner lines  
+fire_params.z = 1.0 - standard red/orange colour  
+fire_params.z > 1.0 - red/orange enhancement  
+fire_params.z < 1.0 - red/orange weakening  
+fire_params.w = 1.0 - standard blue component  
+fire_params.w > 1.0 - more blue fire  
+fire_params.w < 1.0 - less blue fire  
+
+**rect_params:**   
+rect_params.x -  width  
+rect_params.y -  height  
+rect_params.z - corner radius  
+
 
 ### Online demo [here](https://on.itch.io/fire-glow)
 

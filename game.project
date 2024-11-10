@@ -13,9 +13,6 @@ high_dpi = 1
 [android]
 input_method = HiddenInputField
 
-[html5]
-scale_mode = stretch
-
 [project]
 title = fire_glow_shader
 
