@@ -1,0 +1,110 @@
+--[[
+fire_params:
+fire_params.x = 1.0 - standard fire size
+fire_params.x > 1.0 - larger fire
+fire_params.x < 1.0 - smaller fire
+fire_params.y = 1.0 - standard line thickness
+fire_params.y > 1.0 - thicker lines
+fire_params.y < 1.0 - thinner lines
+
+fire_params.z = 1.0 - standard red/orange colour
+fire_params.z > 1.0 - red/orange enhancement
+fire_params.z < 1.0 - red/orange weakening
+fire_params.w = 1.0 - standard blue component
+fire_params.w > 1.0 - more blue fire
+fire_params.w < 1.0 - less blue fire
+
+
+--]]
+
+
+function init(self)
+	msg.post(".", "acquire_input_focus")
+	self.time = 0.0
+	self.fire_size=1.0
+	self.line_size=1.0
+	self.color_a=1.0
+	self.color_b=0.5
+	self.rect_w=0.2
+	self.rect_h=0.3
+	self.radius=-0.5
+end
+
+
+function update(self, dt)
+	self.time = self.time + dt
+	gui.set(gui.get_node("box"), "time", vmath.vector4(self.time, 0, 0, 0),{})
+end
+
+
+function on_input(self, action_id, action)
+	if action_id==hash("touch") and action.released then
+		local node=gui.get_node("box")
+		if gui.pick_node(gui.get_node("fire_add"), action.x, action.y) then
+			self.fire_size=self.fire_size+0.2
+			gui.set(node, "fire_params.y", self.fire_size)
+			gui.set_text(gui.get_node("size_txt"), self.fire_size)
+		elseif gui.pick_node(gui.get_node("fire_sub"), action.x, action.y) then
+			self.fire_size=self.fire_size-0.2
+			gui.set(node, "fire_params.y", self.fire_size)
+			gui.set_text(gui.get_node("size_txt"), self.fire_size)
+			--
+		elseif gui.pick_node(gui.get_node("line_add"), action.x, action.y) then
+			self.line_size=self.line_size+0.2
+			gui.set(node, "fire_params.x", self.line_size)
+			gui.set_text(gui.get_node("line_txt"), self.line_size)
+			
+		elseif gui.pick_node(gui.get_node("line_sub"), action.x, action.y) then
+			self.line_size=self.line_size-0.2
+			gui.set(node, "fire_params.x", self.line_size)
+			gui.set_text(gui.get_node("line_txt"), self.line_size)
+			
+			--
+		elseif gui.pick_node(gui.get_node("color_a_add"), action.x, action.y) then
+			self.color_a=self.color_a+0.2
+			gui.set(node, "fire_params.z", self.color_a)
+			gui.set_text(gui.get_node("color_a_txt"), self.color_a)
+		elseif gui.pick_node(gui.get_node("color_a_sub"), action.x, action.y) then
+			self.color_a=self.color_a-0.2
+			gui.set(node, "fire_params.z", self.color_a)
+			gui.set_text(gui.get_node("color_a_txt"), self.color_a)
+			--
+		elseif gui.pick_node(gui.get_node("color_b_add"), action.x, action.y) then
+			self.color_b=self.color_b+0.2
+			gui.set(node, "fire_params.w", self.color_b)
+			gui.set_text(gui.get_node("color_b_txt"), self.color_b)
+		elseif gui.pick_node(gui.get_node("color_b_sub"), action.x, action.y) then
+			self.color_b=self.color_b-0.2
+			gui.set(node, "fire_params.w", self.color_b)
+			gui.set_text(gui.get_node("color_b_txt"), self.color_b)
+			--
+		elseif gui.pick_node(gui.get_node("size_w_add"), action.x, action.y) then
+			self.rect_w=self.rect_w+0.1
+			gui.set(node, "rect_params.x", self.rect_w)
+			gui.set_text(gui.get_node("rect_w_txt"), self.rect_w)
+		elseif gui.pick_node(gui.get_node("size_w_sub"), action.x, action.y) then
+			self.rect_w=self.rect_w-0.1
+			gui.set(node, "rect_params.x", self.rect_w)
+			gui.set_text(gui.get_node("rect_w_txt"), self.rect_w)
+			--
+		elseif gui.pick_node(gui.get_node("size_h_add"), action.x, action.y) then
+			self.rect_h=self.rect_h+0.1
+			gui.set(node, "rect_params.y", self.rect_h)
+			gui.set_text(gui.get_node("rect_h_txt"), self.rect_h)
+		elseif gui.pick_node(gui.get_node("size_h_sub"), action.x, action.y) then
+			self.rect_h=self.rect_h-0.1
+			gui.set(node, "rect_params.y", self.rect_h)
+			gui.set_text(gui.get_node("rect_h_txt"), self.rect_h)
+			--
+		elseif gui.pick_node(gui.get_node("radius_add"), action.x, action.y) then
+			self.radius=self.radius+0.1
+			gui.set(node, "rect_params.z", self.radius)
+			gui.set_text(gui.get_node("radius_txt"), self.radius)
+		elseif gui.pick_node(gui.get_node("radius_sub"), action.x, action.y) then
+			self.radius=self.radius-0.1
+			gui.set(node, "rect_params.z", self.radius)
+			gui.set_text(gui.get_node("radius_txt"), self.radius)
+		end
+	end
+end
+

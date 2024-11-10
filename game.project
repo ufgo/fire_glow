@@ -1,0 +1,24 @@
+[bootstrap]
+main_collection = /main/main.collectionc
+render = /render/my.renderc
+
+[script]
+shared_state = 1
+
+[display]
+width = 1280
+height = 1024
+high_dpi = 1
+
+[android]
+input_method = HiddenInputField
+
+[html5]
+scale_mode = stretch
+
+[project]
+title = fire_glow_shader
+
+[library]
+include_dirs = fire_glow
+

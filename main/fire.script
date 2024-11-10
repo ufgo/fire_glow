@@ -1,0 +1,9 @@
+function init(self)
+	self.time=0
+end
+
+function update(self, dt)
+	self.time = self.time + dt
+	--go.set("#model", "resolution", vmath.vector4(400, 400, 0, 0))
+	go.set("#model", "time", vmath.vector4(self.time, 0, 0, 0))
+end

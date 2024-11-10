@@ -1,0 +1,41 @@
+name: "fire"
+tags: "fire"
+vertex_program: "/fire_glow/fire.vp"
+fragment_program: "/fire_glow/fire.fp"
+vertex_constants {
+  name: "view_proj"
+  type: CONSTANT_TYPE_VIEWPROJ
+}
+fragment_constants {
+  name: "time"
+  type: CONSTANT_TYPE_USER
+  value {
+  }
+}
+fragment_constants {
+  name: "fire_params"
+  type: CONSTANT_TYPE_USER
+  value {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 0.5
+  }
+}
+fragment_constants {
+  name: "rect_params"
+  type: CONSTANT_TYPE_USER
+  value {
+    x: 0.2
+    y: 0.3
+    z: -0.5
+  }
+}
+samplers {
+  name: "texture_sampler"
+  wrap_u: WRAP_MODE_CLAMP_TO_EDGE
+  wrap_v: WRAP_MODE_CLAMP_TO_EDGE
+  filter_min: FILTER_MODE_MIN_LINEAR
+  filter_mag: FILTER_MODE_MAG_LINEAR
+  max_anisotropy: 0.0
+}
