@@ -1,4 +1,4 @@
-![](title.gif)
+![](title.jpg)
 
 
 # Fire Glow for Defold
